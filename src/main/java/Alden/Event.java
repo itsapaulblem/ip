@@ -5,16 +5,37 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents an event task with a start and end time.
+ * The event is stored with its description and a time range (from and to).
+ * This class extends the {@link Task} class and provides functionality
+ * to parse, display, and save event-related information.
+ */
 public class Event extends Task {
-    private LocalDateTime from;
-    private LocalDateTime to;
+    private LocalDateTime from; // Start time of the event
+    private LocalDateTime to;   // End time of the event
 
+    /**
+     * Constructs an Event object with the given description and date-time range.
+     *
+     * @param description The description of the event.
+     * @param from The start date/time of the event.
+     * @param to The end date/time of the event.
+     */
     public Event(String description, String from, String to) {
         super(description);
         this.from = parseDateTime(from);
         this.to = parseDateTime(to);
     }
 
+    /**
+     * Parses the given date-time string and returns a {@link LocalDateTime} object.
+     * The method tries to parse the date-time using both date and time. If only a date is provided,
+     * it defaults to the start of the day (00:00).
+     *
+     * @param dateTimeString The date-time string to be parsed.
+     * @return A {@link LocalDateTime} representing the parsed date and time.
+     */
     private LocalDateTime parseDateTime(String dateTimeString) {
         try {
             // Try to parse with both date and time
@@ -33,6 +54,12 @@ public class Event extends Task {
         }
     }
 
+    /**
+     * Returns the string representation of the event task.
+     * This includes the task type, status icon, description, and the start and end times of the event.
+     *
+     * @return A string representing the event task.
+     */
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a");
@@ -41,6 +68,12 @@ public class Event extends Task {
                 " to: " + to.format(formatter) + ")";
     }
 
+    /**
+     * Returns a string representation of the event task in a format suitable for saving to a file.
+     * This includes the task type, status, description, start time, and end time.
+     *
+     * @return A string representing the event task in a file-friendly format.
+     */
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
