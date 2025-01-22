@@ -1,4 +1,5 @@
 package Alden;
+
 public class Parser {
     public static Command parse(String fullCommand) throws AldenException {
         if (fullCommand.startsWith("todo")) {
@@ -19,8 +20,6 @@ public class Parser {
             return new ExitCommand();
         } else if (fullCommand.startsWith("find")) {
             return new FindTaskCommand(fullCommand);
-        } else if (fullCommand.isEmpty()) {
-            throw new AldenException("Keyword cannot be empty for find command.");
         } else {
             throw new AldenException("Invalid command: " + fullCommand);
         }
