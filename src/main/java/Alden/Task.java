@@ -15,7 +15,10 @@ public abstract class Task {
      * @param description The description of the task.
      */
     public Task(String description) {
-        this.description = description;
+        if (description == null || description.trim().isEmpty()) {
+            throw new IllegalArgumentException("Task description cannot be empty or null.");
+        }
+        this.description = description.trim(); // Trim whitespace
         this.isDone = false;
     }
 
@@ -48,6 +51,11 @@ public abstract class Task {
      *
      * @return A string representation of the task in file format.
      */
+
+    public String getDescription(){
+        return this.description;
+    }
+
     public abstract String toFileFormat();
 
     /**
@@ -58,6 +66,21 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        return (isDone ? "[X]" : "[ ]") + " " + description;
+        return "[" + getStatusIcon() + "] " + description; // Consistent with getStatusIcon
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Task task = (Task) obj;
+        return isDone == task.isDone && description.equals(task.description);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = description.hashCode();
+        result = 31 * result + (isDone ? 1 : 0);
+        return result;
     }
 }

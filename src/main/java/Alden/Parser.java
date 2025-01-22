@@ -31,7 +31,11 @@ public class Parser {
         } else if (fullCommand.equalsIgnoreCase("list")) {
             return new ListTasksCommand(); // Create a new ListTasksCommand
         } else if (fullCommand.equalsIgnoreCase("bye")) {
-            return new ExitCommand(); // Create a new ExitCommand
+            return new ExitCommand();
+        } else if (fullCommand.startsWith("find")) {
+            return new FindTaskCommand(fullCommand);
+        } else if (fullCommand.isEmpty()) {
+            throw new AldenException("Keyword cannot be empty for find command.");
         } else {
             throw new AldenException("Invalid command: " + fullCommand); // Throw exception if the command is invalid
         }
