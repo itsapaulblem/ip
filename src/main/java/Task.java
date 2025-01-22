@@ -7,16 +7,12 @@ public abstract class Task {
         this.isDone = false;
     }
 
-    public boolean isDone() {
-        return isDone;
-    }
-
     public void markAsDone() {
-        this.isDone = true;
+        isDone = true;
     }
 
     public void unmarkAsDone() {
-        this.isDone = false;
+        isDone = false;
     }
 
     public String getStatusIcon() {
@@ -27,6 +23,6 @@ public abstract class Task {
 
     @Override
     public String toString() {
-        return "[" + this.getClass().getSimpleName().charAt(0) + "][" + getStatusIcon() + "] " + description;
+        return (isDone ? "[X]" : "[ ]") + " " + description;
     }
 }
