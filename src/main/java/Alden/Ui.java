@@ -1,4 +1,5 @@
 package Alden;
+import java.util.ArrayList; // Import the ArrayList class
 public class Ui {
     public void showWelcome() {
         System.out.println("____________________________________________________________");
@@ -62,6 +63,18 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
+    public void showMatchingTasks(ArrayList<Task> matchingTasks) {
+        System.out.println("____________________________________________________________");
+        if (matchingTasks.isEmpty()) {
+            System.out.println(" No matching tasks found.");
+        } else {
+            System.out.println(" Here are the matching tasks in your list:");
+            for (int i = 0; i < matchingTasks.size(); i++) {
+                System.out.println(" " + (i + 1) + "." + matchingTasks.get(i));
+            }
+        }
+        System.out.println("____________________________________________________________");
+    }
     public void showExitMessage() {
         System.out.println("____________________________________________________________");
         System.out.println(" Bye. Hope to see you again soon!");

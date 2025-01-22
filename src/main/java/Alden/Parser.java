@@ -17,6 +17,10 @@ public class Parser {
             return new ListTasksCommand();
         } else if (fullCommand.equalsIgnoreCase("bye")) {
             return new ExitCommand();
+        } else if (fullCommand.startsWith("find")) {
+            return new FindTaskCommand(fullCommand);
+        } else if (fullCommand.isEmpty()) {
+            throw new AldenException("Keyword cannot be empty for find command.");
         } else {
             throw new AldenException("Invalid command: " + fullCommand);
         }
