@@ -1,4 +1,5 @@
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,24 +67,47 @@ public class Alden {
             }
             Scanner fileScanner = new Scanner(file);
             while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
+                String line = fileScanner.nextLine().trim();
+
+                if (line.isEmpty()) continue;
+
                 String[] parts = line.split(" \\| ");
+                if (parts.length < 3) {
+                    System.out.println("Warning: Skipping malformed line in file: " + line);
+                    continue;
+                }
+
                 String taskType = parts[0];
                 boolean isDone = parts[1].equals("1");
                 Task task;
+
                 switch (taskType) {
                     case "T":
+                        if (parts.length < 3) {
+                            System.out.println("Warning: Skipping malformed Todo task: " + line);
+                            continue;
+                        }
                         task = new Todo(parts[2]);
                         break;
                     case "D":
+                        if (parts.length < 4) {
+                            System.out.println("Warning: Skipping malformed Deadline task: " + line);
+                            continue;
+                        }
                         task = new Deadline(parts[2], parts[3]);
                         break;
                     case "E":
+                        if (parts.length < 5) {
+                            System.out.println("Warning: Skipping malformed Event task: " + line);
+                            continue;
+                        }
                         task = new Event(parts[2], parts[3], parts[4]);
                         break;
                     default:
-                        throw new IOException("Corrupted data format");
+                        System.out.println("Warning: Skipping unknown task type in line: " + line);
+                        continue;
                 }
+
                 if (isDone) task.markAsDone();
                 tasks.add(task);
             }
