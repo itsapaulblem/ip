@@ -1,3 +1,4 @@
+package Alden;
 public class Parser {
     public static Command parse(String fullCommand) throws AldenException {
         if (fullCommand.startsWith("todo")) {

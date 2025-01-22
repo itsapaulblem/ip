@@ -1,8 +1,12 @@
-public class DeleteTaskCommand extends Command {
-    private String userInput;
+package Alden;
 
-    public DeleteTaskCommand(String userInput) {
+public class MarkTaskCommand extends Command {
+    private String userInput;
+    private boolean isDone;
+
+    public MarkTaskCommand(String userInput, boolean isDone) {
         this.userInput = userInput;
+        this.isDone = isDone;
     }
 
     @Override
@@ -11,8 +15,14 @@ public class DeleteTaskCommand extends Command {
         if (taskNumber < 0 || taskNumber >= tasks.size()) {
             throw new AldenException("Invalid task number.");
         }
-        Task removedTask = tasks.removeTask(taskNumber);
-        ui.showTaskRemoved(removedTask, tasks.size());
+        Task task = tasks.get(taskNumber);
+        if (isDone) {
+            task.markAsDone();
+            ui.showTaskMarkedAsDone(task);
+        } else {
+            task.unmarkAsDone();
+            ui.showTaskUnmarked(task);
+        }
         storage.save(tasks.getTasks());
     }
 }

@@ -1,3 +1,5 @@
+package Alden;
+
 public class AddEventCommand extends Command {
     private String userInput;
 

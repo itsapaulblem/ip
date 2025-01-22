@@ -1,3 +1,4 @@
+package Alden;
 import java.util.Scanner;
 
 public class Alden {
