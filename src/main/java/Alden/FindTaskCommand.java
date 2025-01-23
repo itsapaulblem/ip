@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class FindTaskCommand extends Command {
     private final String keyword;
 
-    public FindTaskCommand(String keyword) {
-        this.keyword = keyword;
+    public FindTaskCommand(String fullCommand) {
+        this.keyword = fullCommand.substring(4).trim();
     }
 
     @Override
