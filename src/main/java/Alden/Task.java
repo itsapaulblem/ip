@@ -26,6 +26,7 @@ public abstract class Task {
      * Marks the task as done.
      */
     public void markAsDone() {
+
         isDone = true;
     }
 
@@ -33,6 +34,7 @@ public abstract class Task {
      * Marks the task as not done.
      */
     public void unmarkAsDone() {
+
         isDone = false;
     }
 
@@ -42,6 +44,7 @@ public abstract class Task {
      * @return "X" if the task is done, " " if the task is not done.
      */
     public String getStatusIcon() {
+
         return (isDone ? "X" : " "); // Marked done or not done
     }
 
@@ -53,6 +56,7 @@ public abstract class Task {
      */
 
     public String getDescription(){
+
         return this.description;
     }
 
@@ -66,7 +70,7 @@ public abstract class Task {
      */
     @Override
     public String toString() {
-        return "[" + getStatusIcon() + "] " + description; // Consistent with getStatusIcon
+        return "[" + getStatusIcon() + "] " + description;
     }
 
     @Override

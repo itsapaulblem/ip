@@ -9,7 +9,7 @@ import java.util.Scanner;
  * It handles reading and writing task data to the file specified by the file path.
  */
 public class Storage {
-    private String filePath;
+    private final String filePath;
 
     /**
      * Constructs a new Storage object with the specified file path.
@@ -17,6 +17,7 @@ public class Storage {
      * @param filePath The path to the file where tasks will be saved or loaded.
      */
     public Storage(String filePath) {
+
         this.filePath = filePath;
     }
 

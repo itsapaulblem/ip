@@ -11,6 +11,7 @@ public class Todo extends Task {
      * @param description The description of the Todo task.
      */
     public Todo(String description) {
+
         super(description);
     }
 
@@ -22,6 +23,7 @@ public class Todo extends Task {
      */
     @Override
     public String toString() {
+
         return "[T][" + getStatusIcon() + "] " + description;
     }
 
@@ -33,6 +35,7 @@ public class Todo extends Task {
      */
     @Override
     public String toFileFormat() {
+
         return "T | " + (isDone ? "1" : "0") + " | " + description;
     }
 }

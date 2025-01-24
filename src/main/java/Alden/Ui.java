@@ -1,10 +1,10 @@
 package Alden;
 
-/**
- * Represents the user interface that interacts with the user by displaying messages.
+/*
+  Represents the user interface that interacts with the user by displaying messages.
  */
 
-import java.util.ArrayList; // Import the ArrayList class
+import java.util.ArrayList;
 
 public class Ui {
 
@@ -111,7 +111,6 @@ public class Ui {
     /**
      * Displays an exit message when the program ends.
      */
-
     public void showMatchingTasks(ArrayList<Task> matchingTasks) {
         System.out.println("____________________________________________________________");
         if (matchingTasks.isEmpty()) {

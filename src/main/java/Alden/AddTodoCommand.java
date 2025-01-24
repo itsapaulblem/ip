@@ -14,6 +14,7 @@ public class AddTodoCommand extends Command {
      * @param userInput The input from the user that contains the task description.
      */
     public AddTodoCommand(String userInput) {
+
         this.userInput = userInput;
     }
 
@@ -32,6 +33,7 @@ public class AddTodoCommand extends Command {
         if (userInput.length() <= 5) {
             throw new AldenException("The description of a todo cannot be empty.");
         }
+
         String description = userInput.substring(5).trim();
         Task newTask = new Todo(description);
         tasks.addTask(newTask);

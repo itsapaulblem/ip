@@ -1,14 +1,13 @@
 package Alden;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents a list of tasks. This class provides methods to add, remove, and retrieve tasks.
  * It also provides methods to get the size of the list and check if it is empty.
  */
 public class TaskList {
-    private ArrayList<Task> tasks = new ArrayList<>(); // List of tasks
+    private final ArrayList<Task> tasks = new ArrayList<>(); // List of tasks
 
     /**
      * Adds a task to the list.
@@ -26,6 +25,7 @@ public class TaskList {
      * @return The task that was removed.
      */
     public Task removeTask(int index) {
+
         return tasks.remove(index);
     }
 
@@ -36,6 +36,7 @@ public class TaskList {
      * @return The task at the specified index.
      */
     public Task get(int index) {
+
         return tasks.get(index);
     }
 
@@ -45,6 +46,7 @@ public class TaskList {
      * @return The size of the task list.
      */
     public int size() {
+
         return tasks.size();
     }
 
@@ -54,6 +56,7 @@ public class TaskList {
      * @return True if the list contains no tasks, otherwise false.
      */
     public boolean isEmpty() {
+
         return tasks.isEmpty();
     }
 
@@ -63,6 +66,7 @@ public class TaskList {
      * @return The list of tasks.
      */
     public ArrayList<Task> getTasks() {
+
         return tasks;
     }
 

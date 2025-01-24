@@ -5,8 +5,8 @@ package Alden;
  * This command handles updating the task's completion status based on user input.
  */
 public class MarkTaskCommand extends Command {
-    private String userInput;
-    private boolean isDone;
+    private final String userInput;
+    private final boolean isDone;
 
     /**
      * Constructs a MarkTaskCommand instance.

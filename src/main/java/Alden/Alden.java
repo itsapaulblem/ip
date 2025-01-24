@@ -24,7 +24,6 @@ public class Alden {
         // Load tasks from the storage file
         storage.load(tasks);
 
-
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
 
@@ -39,12 +38,12 @@ public class Alden {
 
                 // Check if the user wants to exit
                 if (userInput.equalsIgnoreCase("bye")) {
-                    isRunning = false; // Exit the loop
-                    ui.showGoodbye(); // Display goodbye message
+                    isRunning = false;
+                    ui.showGoodbye();
                 } else {
                     // Parse the user input into a command and execute it
                     Command command = Parser.parse(userInput);
-                    command.execute(tasks, ui, storage); // Execute the command
+                    command.execute(tasks, ui, storage);
                 }
             } catch (AldenException e) {
                 // Display error message if there is an exception

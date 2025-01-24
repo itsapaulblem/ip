@@ -14,6 +14,7 @@ public class AddDeadlineCommand extends Command {
      * @param userInput The input from the user that contains the task description and deadline.
      */
     public AddDeadlineCommand(String userInput) {
+
         this.userInput = userInput;
     }
 

@@ -12,8 +12,8 @@ import java.time.format.DateTimeParseException;
  * to parse, display, and save event-related information.
  */
 public class Event extends Task {
-    private LocalDateTime from; // Start time of the event
-    private LocalDateTime to;   // End time of the event
+    private final LocalDateTime from; // Start time of the event
+    private final LocalDateTime to;   // End time of the event
 
     /**
      * Constructs an Event object with the given description and date-time range.

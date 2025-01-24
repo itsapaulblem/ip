@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
  * to handle a specific deadline date and time associated with the task.
  */
 public class Deadline extends Task {
-    private LocalDateTime dateTime; // The deadline date and time for the task
+    private final LocalDateTime dateTime; // The deadline date and time for the task
 
     /**
      * Constructs a new Deadline task with the specified description and deadline time.
@@ -36,7 +36,7 @@ public class Deadline extends Task {
         if (by.equalsIgnoreCase("today")) {
             return LocalDateTime.now();
         } else if (by.equalsIgnoreCase("tomorrow")) {
-            return LocalDateTime.now().plus(1, ChronoUnit.DAYS);
+            return LocalDateTime.now().plusDays(1);
         }
 
         try {
