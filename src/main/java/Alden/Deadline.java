@@ -19,7 +19,7 @@ public class Deadline extends Task {
      * @param by The deadline time as a string,
      *     which can be a specific date or special keywords (e.g., "today", "tomorrow").
      */
-    public Deadline(String description, String by) {
+    public Deadline(String description, String by) throws AldenException {
         super(description);
         this.dateTime = parseDateTime(by);
     }
@@ -33,7 +33,7 @@ public class Deadline extends Task {
      *     Can be a specific date (yyyy/MM/dd) or a date-time (yyyy/MM/dd HHmm).
      * @return A {@link LocalDateTime} object representing the parsed deadline date and time.
      */
-    private LocalDateTime parseDateTime(String by) {
+    private LocalDateTime parseDateTime(String by) throws AldenException {
         // Handle special keywords
         if (by.equalsIgnoreCase("today")) {
             return LocalDateTime.now();
@@ -53,8 +53,7 @@ public class Deadline extends Task {
                 return date.atStartOfDay();
             }
         } catch (Exception e) {
-            System.out.println("Error: Invalid date format. Use yyyy/MM/dd or yyyy/MM/dd HHmm");
-            return LocalDateTime.now(); // Default to current time if parsing fails
+            throw new AldenException("Error: Invalid date format. Use yyyy/MM/dd or yyyy/MM/dd HHmm");
         }
     }
 

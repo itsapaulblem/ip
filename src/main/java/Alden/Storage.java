@@ -49,29 +49,34 @@ public class Storage {
                 Task task = null;
 
                 // Create task based on task type in the file
-                switch (taskType) {
-                    case "T": {
-                        if (parts.length >= 3) {
-                            task = new Todo(parts[2]);
+                try {
+                    switch (taskType) {
+                        case "T": {
+                            if (parts.length >= 3) {
+                                task = new Todo(parts[2]);
+                            }
+                            break;
                         }
-                        break;
-                    }
-                    case "D": {
-                        if (parts.length >= 4) {
-                            task = new Deadline(parts[2], parts[3]);
+                        case "D": {
+                            if (parts.length >= 4) {
+                                task = new Deadline(parts[2], parts[3]);
+                            }
+                            break;
                         }
-                        break;
-                    }
-                    case "E": {
-                        if (parts.length >= 5) {
-                            task = new Event(parts[2], parts[3], parts[4]);
+                        case "E": {
+                            if (parts.length >= 5) {
+                                task = new Event(parts[2], parts[3], parts[4]);
+                            }
+                            break;
                         }
-                        break;
+                        default: {
+                            System.out.println("Unknown task type in file: " + taskType);
+                            break;
+                        }
                     }
-                    default: {
-                        System.out.println("Unknown task type in file: " + taskType);
-                        break;
-                    }
+                } catch (AldenException e) {
+                    System.out.println("Error creating task from file: " + e.getMessage());
+                    continue; // Skip this task if there's an error creating it
                 }
 
                 // Mark task as done if indicated in the file
@@ -87,6 +92,7 @@ public class Storage {
             System.out.println("Error loading tasks: " + e.getMessage());
         }
     }
+
 
     /**
      * Saves the tasks in the provided TaskList to the file specified by the file path.

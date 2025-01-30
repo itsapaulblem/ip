@@ -22,7 +22,7 @@ public class Event extends Task {
      * @param from The start date/time of the event.
      * @param to The end date/time of the event.
      */
-    public Event(String description, String from, String to) {
+    public Event(String description, String from, String to) throws AldenException {
         super(description);
         this.from = parseDateTime(from);
         this.to = parseDateTime(to);
@@ -36,7 +36,7 @@ public class Event extends Task {
      * @param dateTimeString The date-time string to be parsed.
      * @return A {@link LocalDateTime} representing the parsed date and time.
      */
-    private LocalDateTime parseDateTime(String dateTimeString) {
+    private LocalDateTime parseDateTime(String dateTimeString) throws AldenException {
         try {
             // Try to parse with both date and time
             if (dateTimeString.contains(" ")) {
@@ -49,8 +49,7 @@ public class Event extends Task {
                 return date.atStartOfDay();
             }
         } catch (DateTimeParseException e) {
-            System.out.println("Error: Invalid date format. Use yyyy/MM/dd or yyyy/MM/dd HHmm");
-            return LocalDateTime.now(); // Default to current time if parsing fails
+            throw new AldenException("Error: Invalid date format. Use yyyy/MM/dd or yyyy/MM/dd HHmm");
         }
     }
 
