@@ -109,7 +109,9 @@ public class Ui {
     }
 
     /**
-     * Displays an exit message when the program ends.
+     * Displays a message when tasks matching a search query are found.
+     *
+     * @param matchingTasks The list of tasks that match the search query.
      */
     public void showMatchingTasks(ArrayList<Task> matchingTasks) {
         System.out.println("____________________________________________________________");
@@ -124,6 +126,9 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
+    /**
+     * Displays an exit message when the program ends.
+     */
     public void showExitMessage() {
         System.out.println("____________________________________________________________");
         System.out.println(" Bye. Hope to see you again soon!");
