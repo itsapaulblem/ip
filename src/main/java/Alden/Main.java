@@ -9,11 +9,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * The main class for the Alden task management application.
+ * This class handles the initialization of the GUI and the main application loop.
+ */
 public class Main extends Application {
     private static final String FILE_PATH = "./data/Alden.txt";
 
@@ -28,6 +31,11 @@ public class Main extends Application {
     private Button sendButton;
     private Scene scene;
 
+    /**
+     * Starts the Alden application by initializing the GUI and loading tasks.
+     *
+     * @param stage The primary stage for this application.
+     */
     @Override
     public void start(Stage stage) {
         tasks = new TaskList();
@@ -80,6 +88,9 @@ public class Main extends Application {
         AnchorPane.setBottomAnchor(inputField, 1.0);
     }
 
+    /**
+     * Handles user input from the text field.
+     */
     private void handleInput() {
         String input = inputField.getText().trim();
         if (!input.isEmpty()) {
@@ -109,12 +120,21 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Adds a dialog box to the dialog container and scrolls to the bottom.
+     *
+     * @param dialogBox The dialog box to add.
+     */
     private void addToDialogContainer(DialogBox dialogBox) {
         dialogContainer.getChildren().add(dialogBox);
-        scrollPane.setVvalue(1.0); // Scroll to bottom
+        scrollPane.setVvalue(1.0);
     }
 
-
+    /**
+     * Main method to launch the Alden application.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         launch(args);
     }

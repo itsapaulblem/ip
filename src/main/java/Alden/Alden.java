@@ -58,8 +58,6 @@ public class Alden {
                 ui.showError(e.getMessage());
             }
         }
-
-        // Close the scanner to free resources
         scanner.close();
     }
 }
