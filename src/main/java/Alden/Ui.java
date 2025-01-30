@@ -37,56 +37,56 @@ public class Ui {
     }
 
     public void showWelcome() {
-        appendToOutput("____________________________________________________________");
+     //   appendToOutput("____________________________________________________________");
         appendToOutput(" Hello! I'm Alden");
         appendToOutput(" What can I do for you?");
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
     }
 
     public void showGoodbye() {
-        appendToOutput("____________________________________________________________");
+     //   appendToOutput("____________________________________________________________");
         appendToOutput(" Bye. Hope to see you again soon!");
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
     }
 
     public void showError(String message) {
-        appendToOutput("____________________________________________________________");
+     //   appendToOutput("____________________________________________________________");
         appendToOutput(" Error: " + message);
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
     }
 
     public void showTaskAdded(Task task, int size) {
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
         appendToOutput(" Got it. I've added this task:");
         appendToOutput("   " + task);
         appendToOutput(" Now you have " + size + " tasks in the list.");
-        appendToOutput("____________________________________________________________");
+       // appendToOutput("____________________________________________________________");
     }
 
     public void showTaskMarkedAsDone(Task task) {
-        appendToOutput("____________________________________________________________");
+     //   appendToOutput("____________________________________________________________");
         appendToOutput(" Nice! I've marked this task as done:");
         appendToOutput("   " + task);
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
     }
 
     public void showTaskUnmarked(Task task) {
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
         appendToOutput(" OK, I've marked this task as not done yet:");
         appendToOutput("   " + task);
-        appendToOutput("____________________________________________________________");
+   //     appendToOutput("____________________________________________________________");
     }
 
     public void showTaskRemoved(Task task, int size) {
-        appendToOutput("____________________________________________________________");
+      //  appendToOutput("____________________________________________________________");
         appendToOutput(" Noted. I've removed this task:");
         appendToOutput("   " + task);
         appendToOutput(" Now you have " + size + " tasks in the list.");
-        appendToOutput("____________________________________________________________");
+       // appendToOutput("____________________________________________________________");
     }
 
     public void printTaskList(TaskList tasks) {
-        appendToOutput("____________________________________________________________");
+    //    appendToOutput("____________________________________________________________");
         if (tasks.isEmpty()) {
             appendToOutput(" Your task list is empty.");
         } else {
@@ -95,11 +95,11 @@ public class Ui {
                 appendToOutput(" " + (i + 1) + "." + tasks.get(i));
             }
         }
-        appendToOutput("____________________________________________________________");
+      //  appendToOutput("____________________________________________________________");
     }
 
     public void showMatchingTasks(ArrayList<Task> matchingTasks) {
-        appendToOutput("____________________________________________________________");
+       // appendToOutput("____________________________________________________________");
         if (matchingTasks.isEmpty()) {
             appendToOutput(" No matching tasks found.");
         } else {
@@ -108,7 +108,7 @@ public class Ui {
                 appendToOutput(" " + (i + 1) + "." + matchingTasks.get(i));
             }
         }
-        appendToOutput("____________________________________________________________");
+      //  appendToOutput("____________________________________________________________");
     }
 
     public void showExitMessage() {
