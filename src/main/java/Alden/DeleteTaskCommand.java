@@ -6,7 +6,7 @@ package Alden;
  * to remove a task based on the task number provided by the user.
  */
 public class DeleteTaskCommand extends Command {
-    private final String userInput; // User input containing the task number to delete
+    private final String userInput;
 
     /**
      * Constructs a DeleteTaskCommand with the given user input.

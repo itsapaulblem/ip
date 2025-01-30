@@ -44,10 +44,8 @@ public class AddEventCommand extends Command {
         String from = parts[1].trim();
         String to = parts[2].trim();
 
-        // Create a new Event task with the extracted information
         Task newTask = new Event(description, from, to);
 
-        // Add the new task to the task list
         tasks.addTask(newTask);
 
         // Display a message confirming the task was added

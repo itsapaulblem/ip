@@ -1,13 +1,5 @@
 package Alden;
 
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-
 import java.util.Scanner;
 
 /**
@@ -41,10 +33,8 @@ public class Alden {
         // Main input loop
         while (isRunning) {
             try {
-                // Read user input
                 String userInput = scanner.nextLine().trim();
 
-                // Check if the user wants to exit
                 if (userInput.equalsIgnoreCase("bye")) {
                     isRunning = false;
                     ui.showGoodbye();
