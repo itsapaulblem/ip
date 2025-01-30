@@ -2,22 +2,38 @@ package Alden;
 
 import java.util.ArrayList;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
 
 public class Ui {
-    private TextArea outputArea; // For GUI output
+    private TextArea outputArea; // For console output (if needed)
+    private VBox dialogContainer; // For GUI output
     private boolean isGuiMode = false;
 
-    public void setGuiMode(TextArea outputArea) {
-        this.outputArea = outputArea;
+    public void setGuiMode(VBox container) {
+        this.dialogContainer = container;
         this.isGuiMode = true;
+    }
+
+    public void setTextAreaMode(TextArea area) { // For console mode
+        this.outputArea = area;
+        this.isGuiMode = false;
     }
 
     private void appendToOutput(String message) {
         if (isGuiMode) {
-            outputArea.appendText(message + "\n");
+            addToDialogContainer(new DialogBox(message, new Image(this.getClass().getResourceAsStream("/images/DukeLogo.png")))); //Alden image
         } else {
-            System.out.println(message);
+            if (outputArea != null) { // Check if outputArea is initialized
+                outputArea.appendText(message + "\n");
+            } else {
+                System.out.println(message); // Fallback to console if no TextArea
+            }
         }
+    }
+
+    private void addToDialogContainer(DialogBox dialogBox) {
+        dialogContainer.getChildren().add(dialogBox);
     }
 
     public void showWelcome() {
