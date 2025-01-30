@@ -1,7 +1,7 @@
 package Alden;
 
-import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,39 +13,26 @@ public class DialogBox extends HBox {
     private ImageView displayPicture;
 
     public DialogBox(String s, Image i) {
-        text = new Label(s);
-        displayPicture = new ImageView(i);
-
-        //Styling the dialog box
-        text.setWrapText(true);
-        displayPicture.setFitWidth(100.0);
-        displayPicture.setFitHeight(100.0);
-        this.setAlignment(Pos.TOP_LEFT); // Align to the left for user messages
-
-        this.getChildren().addAll(displayPicture, text); // Display image first, then text
-        this.setSpacing(10); //Add spacing
-        this.setPadding(new Insets(10)); // Add padding
+        this(s, i, false);
     }
-
 
     public DialogBox(String s, Image i, boolean isUser) {
         text = new Label(s);
-        displayPicture = new ImageView(i);
-
-        //Styling the dialog box
         text.setWrapText(true);
-        displayPicture.setFitWidth(100.0);
-        displayPicture.setFitHeight(100.0);
+        displayPicture = new ImageView(i);
+        displayPicture.setFitWidth(50.0);
+        displayPicture.setFitHeight(50.0);
+        displayPicture.setPreserveRatio(true);
+
+        this.setPadding(new Insets(5));
+        this.setSpacing(10);
 
         if (isUser) {
-            this.setAlignment(Pos.TOP_RIGHT); // Align to the right for user messages
-            this.getChildren().addAll(text, displayPicture); // Display text first, then image
+            this.setAlignment(Pos.TOP_RIGHT);
+            this.getChildren().addAll(text, displayPicture);
         } else {
-            this.setAlignment(Pos.TOP_LEFT); // Align to the left for Alden messages
-            this.getChildren().addAll(displayPicture, text); // Display image first, then text
+            this.setAlignment(Pos.TOP_LEFT);
+            this.getChildren().addAll(displayPicture, text);
         }
-        this.setSpacing(10); //Add spacing
-        this.setPadding(new Insets(10)); // Add padding
-
     }
 }

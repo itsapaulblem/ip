@@ -1,13 +1,11 @@
 package Alden;
 
 import java.util.ArrayList;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 
 public class Ui {
-    private TextArea outputArea; // For console output (if needed)
-    private VBox dialogContainer; // For GUI output
+    private VBox dialogContainer;
     private boolean isGuiMode = false;
 
     public void setGuiMode(VBox container) {
@@ -15,20 +13,13 @@ public class Ui {
         this.isGuiMode = true;
     }
 
-    public void setTextAreaMode(TextArea area) { // For console mode
-        this.outputArea = area;
-        this.isGuiMode = false;
-    }
-
-    private void appendToOutput(String message) {
+    private void appendToOutput(String message, boolean isUser) {
         if (isGuiMode) {
-            addToDialogContainer(new DialogBox(message, new Image(this.getClass().getResourceAsStream("/images/DukeLogo.png")))); //Alden image
+            Image image = isUser ? new Image(this.getClass().getResourceAsStream("/images/UserLogo.jpg")) :
+                    new Image(this.getClass().getResourceAsStream("/images/DukeLogo.png"));
+            addToDialogContainer(new DialogBox(message, image, isUser));
         } else {
-            if (outputArea != null) { // Check if outputArea is initialized
-                outputArea.appendText(message + "\n");
-            } else {
-                System.out.println(message); // Fallback to console if no TextArea
-            }
+            System.out.println(message); // Console output (if needed)
         }
     }
 
@@ -37,78 +28,60 @@ public class Ui {
     }
 
     public void showWelcome() {
-     //   appendToOutput("____________________________________________________________");
-        appendToOutput(" Hello! I'm Alden");
-        appendToOutput(" What can I do for you?");
-    //    appendToOutput("____________________________________________________________");
+        appendToOutput(" Hello! I'm Alden", false);
+        appendToOutput(" What can I do for you?", false);
     }
 
     public void showGoodbye() {
-     //   appendToOutput("____________________________________________________________");
-        appendToOutput(" Bye. Hope to see you again soon!");
-    //    appendToOutput("____________________________________________________________");
+        appendToOutput(" Bye. Hope to see you again soon!", false);
     }
 
     public void showError(String message) {
-     //   appendToOutput("____________________________________________________________");
-        appendToOutput(" Error: " + message);
-    //    appendToOutput("____________________________________________________________");
+        appendToOutput(" Error: " + message, false);
     }
 
     public void showTaskAdded(Task task, int size) {
-    //    appendToOutput("____________________________________________________________");
-        appendToOutput(" Got it. I've added this task:");
-        appendToOutput("   " + task);
-        appendToOutput(" Now you have " + size + " tasks in the list.");
-       // appendToOutput("____________________________________________________________");
+        appendToOutput(" Got it. I've added this task:", false);
+        appendToOutput("   " + task, false);
+        appendToOutput(" Now you have " + size + " tasks in the list.", false);
     }
 
     public void showTaskMarkedAsDone(Task task) {
-     //   appendToOutput("____________________________________________________________");
-        appendToOutput(" Nice! I've marked this task as done:");
-        appendToOutput("   " + task);
-    //    appendToOutput("____________________________________________________________");
+        appendToOutput(" Nice! I've marked this task as done:", false);
+        appendToOutput("   " + task, false);
     }
 
     public void showTaskUnmarked(Task task) {
-    //    appendToOutput("____________________________________________________________");
-        appendToOutput(" OK, I've marked this task as not done yet:");
-        appendToOutput("   " + task);
-   //     appendToOutput("____________________________________________________________");
+        appendToOutput(" OK, I've marked this task as not done yet:", false);
+        appendToOutput("   " + task, false);
     }
 
     public void showTaskRemoved(Task task, int size) {
-      //  appendToOutput("____________________________________________________________");
-        appendToOutput(" Noted. I've removed this task:");
-        appendToOutput("   " + task);
-        appendToOutput(" Now you have " + size + " tasks in the list.");
-       // appendToOutput("____________________________________________________________");
+        appendToOutput(" Noted. I've removed this task:", false);
+        appendToOutput("   " + task, false);
+        appendToOutput(" Now you have " + size + " tasks in the list.", false);
     }
 
     public void printTaskList(TaskList tasks) {
-    //    appendToOutput("____________________________________________________________");
         if (tasks.isEmpty()) {
-            appendToOutput(" Your task list is empty.");
+            appendToOutput(" Your task list is empty.", false);
         } else {
-            appendToOutput(" Here are the tasks in your list:");
+            appendToOutput(" Here are the tasks in your list:", false);
             for (int i = 0; i < tasks.size(); i++) {
-                appendToOutput(" " + (i + 1) + "." + tasks.get(i));
+                appendToOutput(" " + (i + 1) + "." + tasks.get(i), false);
             }
         }
-      //  appendToOutput("____________________________________________________________");
     }
 
     public void showMatchingTasks(ArrayList<Task> matchingTasks) {
-       // appendToOutput("____________________________________________________________");
         if (matchingTasks.isEmpty()) {
-            appendToOutput(" No matching tasks found.");
+            appendToOutput(" No matching tasks found.", false);
         } else {
-            appendToOutput(" Here are the matching tasks in your list:");
+            appendToOutput(" Here are the matching tasks in your list:", false);
             for (int i = 0; i < matchingTasks.size(); i++) {
-                appendToOutput(" " + (i + 1) + "." + matchingTasks.get(i));
+                appendToOutput(" " + (i + 1) + "." + matchingTasks.get(i), false);
             }
         }
-      //  appendToOutput("____________________________________________________________");
     }
 
     public void showExitMessage() {

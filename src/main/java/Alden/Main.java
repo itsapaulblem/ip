@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -23,21 +22,18 @@ public class Main extends Application {
     private TaskList tasks;
     private Storage storage;
     private Ui ui;
-    private TextArea outputArea;
-    private TextField inputField;
     private ScrollPane scrollPane;
     private VBox dialogContainer;
+    private TextField inputField;
     private Button sendButton;
     private Scene scene;
 
     @Override
     public void start(Stage stage) {
-        // Initialize components
         tasks = new TaskList();
         storage = new Storage(FILE_PATH);
         ui = new Ui();
 
-        // Create GUI components - Consistent with tutorial structure
         scrollPane = new ScrollPane();
         dialogContainer = new VBox();
         scrollPane.setContent(dialogContainer);
@@ -53,19 +49,13 @@ public class Main extends Application {
         stage.setTitle("Alden Task Manager");
         stage.show();
 
-
-        // Set up UI and load tasks - After stage.show()
-        ui.setGuiMode(dialogContainer); //Changed to dialogContainer
+        ui.setGuiMode(dialogContainer);
         storage.load(tasks);
         ui.showWelcome();
 
-        // Handle input - After stage.show()
         sendButton.setOnAction(e -> handleInput());
         inputField.setOnAction(e -> handleInput());
 
-
-
-        //Formatting the window to look as expected - After stage.show()
         stage.setResizable(false);
         stage.setMinHeight(600.0);
         stage.setMinWidth(400.0);
@@ -75,32 +65,28 @@ public class Main extends Application {
         scrollPane.setPrefSize(385, 535);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-
         scrollPane.setVvalue(1.0);
         scrollPane.setFitToWidth(true);
 
         dialogContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
         inputField.setPrefWidth(325.0);
-
         sendButton.setPrefWidth(55.0);
 
         AnchorPane.setTopAnchor(scrollPane, 1.0);
         AnchorPane.setBottomAnchor(sendButton, 1.0);
         AnchorPane.setRightAnchor(sendButton, 1.0);
-
         AnchorPane.setLeftAnchor(inputField, 1.0);
         AnchorPane.setBottomAnchor(inputField, 1.0);
-
     }
 
     private void handleInput() {
         String input = inputField.getText().trim();
         if (!input.isEmpty()) {
             try {
+                addToDialogContainer(new DialogBox(input, userImage, true)); // User message
                 if (input.equalsIgnoreCase("bye")) {
                     ui.showGoodbye();
-                    // Add slight delay before exit
                     new java.util.Timer().schedule(
                             new java.util.TimerTask() {
                                 @Override
@@ -122,6 +108,12 @@ public class Main extends Application {
             inputField.clear();
         }
     }
+
+    private void addToDialogContainer(DialogBox dialogBox) {
+        dialogContainer.getChildren().add(dialogBox);
+        scrollPane.setVvalue(1.0); // Scroll to bottom
+    }
+
 
     public static void main(String[] args) {
         launch(args);
