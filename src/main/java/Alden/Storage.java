@@ -1,6 +1,8 @@
 package Alden;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +19,6 @@ public class Storage {
      * @param filePath The path to the file where tasks will be saved or loaded.
      */
     public Storage(String filePath) {
-
         this.filePath = filePath;
     }
 
@@ -38,39 +39,46 @@ public class Storage {
             Scanner fileScanner = new Scanner(file);
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine().trim();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty()) {
+                    continue;
+                }
 
                 String[] parts = line.split(" \\| ");
                 String taskType = parts[0];
-                boolean isDone = parts[1].equals("1");
+                boolean isDone = "1".equals(parts[1]);
                 Task task = null;
 
                 // Create task based on task type in the file
                 switch (taskType) {
-                    case "T":
+                    case "T": {
                         if (parts.length >= 3) {
                             task = new Todo(parts[2]);
                         }
                         break;
-                    case "D":
+                    }
+                    case "D": {
                         if (parts.length >= 4) {
                             task = new Deadline(parts[2], parts[3]);
                         }
                         break;
-                    case "E":
+                    }
+                    case "E": {
                         if (parts.length >= 5) {
                             task = new Event(parts[2], parts[3], parts[4]);
                         }
                         break;
+                    }
+                    default: {
+                        System.out.println("Unknown task type in file: " + taskType);
+                        break;
+                    }
                 }
 
                 // Mark task as done if indicated in the file
-                if (task != null && isDone) {
-                    task.markAsDone();
-                }
-
-                // Add task to TaskList if it was successfully created
                 if (task != null) {
+                    if (isDone) {
+                        task.markAsDone();
+                    }
                     tasks.addTask(task);
                 }
             }

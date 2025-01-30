@@ -8,7 +8,8 @@ public class ExitCommand extends Command {
 
     /**
      * Executes the exit command by displaying the exit message.
-     * This method does not modify the task list or storage, as it is only responsible for handling the termination process.
+     * This method does not modify the task list or storage,
+     * as it is only responsible for handling the termination process.
      *
      * @param tasks The current task list (not used in this command).
      * @param ui The UI object used to display messages.

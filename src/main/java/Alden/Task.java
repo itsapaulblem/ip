@@ -55,7 +55,7 @@ public abstract class Task {
      * @return A string representation of the task in file format.
      */
 
-    public String getDescription(){
+    public String getDescription() {
 
         return this.description;
     }
@@ -75,8 +75,12 @@ public abstract class Task {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Task task = (Task) obj;
         return isDone == task.isDone && description.equals(task.description);
     }

@@ -3,7 +3,6 @@ package Alden;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 /**
  * Represents a task with a deadline. This class extends the {@link Task} class and adds functionality
@@ -17,7 +16,8 @@ public class Deadline extends Task {
      * The deadline time is parsed from the given string using {@link #parseDateTime(String)}.
      *
      * @param description A brief description of the task.
-     * @param by The deadline time as a string, which can be a specific date or special keywords (e.g., "today", "tomorrow").
+     * @param by The deadline time as a string,
+     *     which can be a specific date or special keywords (e.g., "today", "tomorrow").
      */
     public Deadline(String description, String by) {
         super(description);
@@ -26,9 +26,11 @@ public class Deadline extends Task {
 
     /**
      * Parses the deadline string to determine the date and time of the deadline.
-     * It handles specific keywords like "today" and "tomorrow", and also parses custom date-time strings.
+     * It handles specific keywords like "today" and "tomorrow",
+     * and also parses custom date-time strings.
      *
-     * @param by A string representing the deadline time. Can be a specific date (yyyy/MM/dd) or a date-time (yyyy/MM/dd HHmm).
+     * @param by A string representing the deadline time.
+     *     Can be a specific date (yyyy/MM/dd) or a date-time (yyyy/MM/dd HHmm).
      * @return A {@link LocalDateTime} object representing the parsed deadline date and time.
      */
     private LocalDateTime parseDateTime(String by) {
@@ -76,7 +78,9 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D][" + getStatusIcon() + "] " + description + " (by: " +
+        return "[D][" + getStatusIcon()
+                + "] " + description + " (by: "
+                +
                 dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a")) + ")";
     }
 }

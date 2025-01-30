@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException;
  */
 public class Event extends Task {
     private final LocalDateTime from; // Start time of the event
-    private final LocalDateTime to;   // End time of the event
+    private final LocalDateTime to; // End time of the event
 
     /**
      * Constructs an Event object with the given description and date-time range.
@@ -63,9 +63,11 @@ public class Event extends Task {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a");
-        return "[E][" + getStatusIcon() + "] " + description +
-                " (from: " + from.format(formatter) +
-                " to: " + to.format(formatter) + ")";
+        return "[E][" + getStatusIcon() + "] "
+                + description + " (from: "
+                + from.format(formatter)
+                + " to: "
+                + to.format(formatter) + ")";
     }
 
     /**
@@ -77,8 +79,8 @@ public class Event extends Task {
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
-        return "E | " + (isDone ? "1" : "0") + " | " + description +
-                " | " + from.format(formatter) +
-                " | " + to.format(formatter);
+        return "E | " + (isDone ? "1" : "0") + " | " + description
+                + " | " + from.format(formatter)
+                + " | " + to.format(formatter);
     }
 }

@@ -19,20 +19,24 @@ public class AddEventCommand extends Command {
 
     /**
      * Executes the command to add an event task to the task list.
-     * The input is expected to contain a description followed by /from and /to clauses for the event's start and end times.
+     * The input is expected to contain a description followed
+     * by /from and /to clauses for the event's start and end times.
      * If the input is invalid (missing /from, /to, or description), an exception is thrown.
      *
      * @param tasks   The task list to which the new event task will be added.
      * @param ui      The user interface to show messages to the user.
-     * @param storage The storage handler to save the updated task list.
-     * @throws AldenException If the user input is malformed or doesn't contain a valid event with description, /from, and /to.
+     * @param storage The storage handler to
+     *     save the updated task list.
+     * @throws AldenException If the user input is malformed or doesn't contain a valid event with description,
+     *     /from, and /to.
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws AldenException {
         String[] parts = userInput.split("/from|/to", 3);
 
         if (parts.length < 3) {
-            throw new AldenException("The event task must have a description, /from clause, and /to clause.");
+            throw new AldenException(
+                    "The event task must have a description, /from clause, and /to clause.");
         }
 
         // Extract description (everything before /from), from time (between /from and /to), and to time (after /to)

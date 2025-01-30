@@ -1,11 +1,11 @@
 package Alden;
 
-/*
-  Represents the user interface that interacts with the user by displaying messages.
- */
-
 import java.util.ArrayList;
 
+
+/**
+ * Represents the user interface that interacts with the user by displaying messages.
+ */
 public class Ui {
 
     /**
