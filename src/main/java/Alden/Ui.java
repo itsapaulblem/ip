@@ -1,8 +1,9 @@
 package Alden;
 
 import java.util.ArrayList;
-import javafx.scene.layout.VBox;
+
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 
 /**
  * The `Ui` class handles the user interface interactions for the Alden application.
@@ -11,7 +12,7 @@ import javafx.scene.image.Image;
 public class Ui {
     private VBox dialogContainer;
     private boolean isGuiMode = false;
-    private StringBuilder currentBotResponse = new StringBuilder(); // Accumulate bot's response
+    private final StringBuilder currentBotResponse = new StringBuilder(); // Accumulate bot's response
 
     /**
      * Sets the UI to GUI mode, using the provided VBox as the dialog container.

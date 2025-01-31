@@ -1,8 +1,6 @@
 package Alden;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -20,16 +18,14 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private static final String FILE_PATH = "./data/Alden.txt";
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/UserLogo.jpg"));
-    private Image aldenImage = new Image(this.getClass().getResourceAsStream("/images/DukeLogo.png"));
+    private final Image userImage = new Image(this.getClass().getResourceAsStream("/images/UserLogo.jpg"));
+    private final Image aldenImage = new Image(this.getClass().getResourceAsStream("/images/DukeLogo.png"));
     private TaskList tasks;
     private Storage storage;
     private Ui ui;
     private ScrollPane scrollPane;
     private VBox dialogContainer;
     private TextField inputField;
-    private Button sendButton;
-    private Scene scene;
 
     /**
      * Starts the Alden application by initializing the GUI and loading tasks.
@@ -47,12 +43,12 @@ public class Main extends Application {
         scrollPane.setContent(dialogContainer);
 
         inputField = new TextField();
-        sendButton = new Button("Send");
+        Button sendButton = new Button("Send");
 
         AnchorPane mainLayout = new AnchorPane();
         mainLayout.getChildren().addAll(scrollPane, inputField, sendButton);
 
-        scene = new Scene(mainLayout);
+        Scene scene = new Scene(mainLayout);
         stage.setScene(scene);
         stage.setTitle("Alden Task Manager");
         stage.show();

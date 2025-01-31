@@ -9,9 +9,9 @@ import java.util.Scanner;
  */
 public class Alden {
     private static final String FILE_PATH = "./data/Alden.txt";
-    private static TaskList tasks = new TaskList(); // The list of tasks
-    private static Storage storage = new Storage(FILE_PATH); // The storage handler for tasks
-    private static Ui ui = new Ui(); // The user interface to interact with the user
+    private static final TaskList tasks = new TaskList(); // The list of tasks
+    private static final Storage storage = new Storage(FILE_PATH); // The storage handler for tasks
+    private static final Ui ui = new Ui(); // The user interface to interact with the user
 
     /**
      * The main method that starts the Alden program.
