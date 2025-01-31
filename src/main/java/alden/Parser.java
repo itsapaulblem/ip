@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * The Parser class is responsible for interpreting the user's input command

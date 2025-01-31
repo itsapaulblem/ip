@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * Custom exception class for handling specific errors in the Alden application.

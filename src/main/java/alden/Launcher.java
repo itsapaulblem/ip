@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * The `Launcher` class is a simple entry point for launching the Alden application.

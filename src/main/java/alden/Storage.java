@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -48,31 +48,26 @@ public class Storage {
                 boolean isDone = "1".equals(parts[1]);
                 Task task = null;
 
-                // Create task based on task type in the file
                 try {
                     switch (taskType) {
-                        case "T": {
+                        case "T":
                             if (parts.length >= 3) {
                                 task = new Todo(parts[2]);
                             }
                             break;
-                        }
-                        case "D": {
+                        case "D":
                             if (parts.length >= 4) {
                                 task = new Deadline(parts[2], parts[3]);
                             }
                             break;
-                        }
-                        case "E": {
+                        case "E":
                             if (parts.length >= 5) {
                                 task = new Event(parts[2], parts[3], parts[4]);
                             }
                             break;
-                        }
-                        default: {
+                        default:
                             System.out.println("Unknown task type in file: " + taskType);
                             break;
-                        }
                     }
                 } catch (AldenException e) {
                     System.out.println("Error creating task from file: " + e.getMessage());
@@ -92,7 +87,6 @@ public class Storage {
             System.out.println("Error loading tasks: " + e.getMessage());
         }
     }
-
 
     /**
      * Saves the tasks in the provided TaskList to the file specified by the file path.

@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * A command that adds a Todo task to the task list.

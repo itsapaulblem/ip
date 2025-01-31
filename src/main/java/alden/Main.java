@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

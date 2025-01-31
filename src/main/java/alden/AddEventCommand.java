@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * A command that adds an event task to the task list.

@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * Represents the command to mark a task as done or not done.

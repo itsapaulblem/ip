@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * Represents a task with a description and a completion status.

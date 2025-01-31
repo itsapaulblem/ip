@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * Represents a Todo task. A Todo is a simple task that has a description and a completion status.

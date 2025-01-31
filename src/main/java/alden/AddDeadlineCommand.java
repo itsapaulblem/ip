@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * A command that adds a deadline task to the task list.

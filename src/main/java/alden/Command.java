@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * An abstract class representing a command in the Alden application.

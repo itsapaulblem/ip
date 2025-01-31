@@ -1,4 +1,4 @@
-package Alden;
+package alden;
 
 /**
  * Represents the command to exit the application.
