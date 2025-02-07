@@ -34,10 +34,14 @@ public class AddTodoCommand extends Command {
             throw new AldenException("The description of a todo cannot be empty.");
         }
 
-        String description = userInput.substring(5).trim();
+        String description = userInput.substring(5).trim(); // Remove "todo" from the input
         Task newTask = new Todo(description);
         tasks.addTask(newTask);
+
+        // Display confirmation of the task being added
         ui.showTaskAdded(newTask, tasks.size());
+
+        // Save the updated task list
         storage.save(tasks.getTasks());
     }
 }

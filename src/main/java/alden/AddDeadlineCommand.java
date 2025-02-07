@@ -40,14 +40,13 @@ public class AddDeadlineCommand extends Command {
             // If there is no "/by" clause, throw an exception
             throw new AldenException("The deadline task must have a description and a /by clause.");
         } else {
-            String description = parts[0].substring(9).trim();
+            String description = parts[0].substring(9).trim(); // Extract description, starting after "deadline"
             assert !description.isEmpty() : "Task description cannot be empty";
 
             String by = parts[1].trim();
             assert !by.isEmpty() : "Deadline cannot be empty";
 
             Task newTask = new Deadline(description, by);
-
             tasks.addTask(newTask);
             assert !tasks.isEmpty() : "Task list should not be empty after adding task";
             assert tasks.get(tasks.size() - 1) == newTask : "Last task should be the newly added task";
