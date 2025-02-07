@@ -90,4 +90,12 @@ public class Event extends Task {
         assert format.split(" \\| ").length == 5 : "File format must have exactly 5 parts";
         return format;
     }
+
+    public LocalDateTime getStartDateTime() {
+        return this.from;
+    }
+
+    public LocalDateTime getEndDateTime() {
+        return this.to;
+    }
 }

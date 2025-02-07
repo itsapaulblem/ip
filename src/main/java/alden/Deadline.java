@@ -91,4 +91,8 @@ public class Deadline extends Task {
                 +
                 dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a")) + ")";
     }
+
+    public LocalDateTime getDateTime() {
+        return this.dateTime;
+    }
 }
