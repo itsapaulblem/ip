@@ -24,7 +24,8 @@ public class Deadline extends Task {
         assert by != null && !by.trim().isEmpty() : "Deadline time cannot be null or empty";
         this.dateTime = parseDateTime(by);
         assert this.dateTime != null : "Parsed datetime cannot be null";
-        assert !this.dateTime.isBefore(LocalDateTime.now().minusMinutes(1)) :
+        assert !this.dateTime.isBefore(LocalDateTime.now().minusMinutes(1))
+                :
                 "Deadline should not be in the past";
     }
 
