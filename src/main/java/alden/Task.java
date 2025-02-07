@@ -5,7 +5,7 @@ package alden;
  * This is the base class for different types of tasks (e.g., Todo, Deadline, Event).
  */
 public abstract class Task {
-    protected String description; // Description of the task
+    protected String description; 
     protected boolean isDone; // Status of whether the task is completed
 
     /**
