@@ -84,7 +84,8 @@ public class Event extends Task {
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
-        String format = "E | " + (isDone ? "1" : "0") + " | " + description + " | " +
+        String format = "E | " + (isDone ? "1" : "0") + " | " + description + " | "
+                +
                 from.format(formatter) + " | " + to.format(formatter);
         assert format.split(" \\| ").length == 5 : "File format must have exactly 5 parts";
         return format;
