@@ -34,7 +34,7 @@ public class Deadline extends Task {
      * @return A {@link LocalDateTime} object representing the parsed deadline date and time.
      */
     private LocalDateTime parseDateTime(String by) throws AldenException {
-        // Handle special keywords
+        // Handle special keywords with optional time
         if (by.equalsIgnoreCase("today")) {
             return LocalDateTime.now();
         } else if (by.equalsIgnoreCase("tomorrow")) {
@@ -42,7 +42,7 @@ public class Deadline extends Task {
         }
 
         try {
-            // First try parsing as date-time format
+            // First try parsing as date-time format (yyyy/MM/dd HHmm)
             if (by.contains(" ")) {
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
                 return LocalDateTime.parse(by, dateTimeFormatter);

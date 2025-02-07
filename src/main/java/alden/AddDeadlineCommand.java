@@ -6,7 +6,7 @@ package alden;
  * creates a new Deadline task, and adds it to the task list.
  */
 public class AddDeadlineCommand extends Command {
-    private String userInput; // The user input containing the description and deadline
+    private final String userInput; // The user input containing the description and deadline
 
     /**
      * Constructs an AddDeadlineCommand with the user input.
@@ -34,8 +34,8 @@ public class AddDeadlineCommand extends Command {
             // If there is no "/by" clause, throw an exception
             throw new AldenException("The deadline task must have a description and a /by clause.");
         } else {
-            String description = parts[0].substring(9).trim();
-            String by = parts[1].trim();
+            String description = parts[0].substring(9).trim(); // Extract description, starting after "deadline"
+            String by = parts[1].trim(); // Extract the deadline date
             Task newTask = new Deadline(description, by);
             tasks.addTask(newTask);
             ui.showTaskAdded(newTask, tasks.size());

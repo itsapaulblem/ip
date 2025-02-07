@@ -40,12 +40,14 @@ public class AddEventCommand extends Command {
         }
 
         // Extract description (everything before /from), from time (between /from and /to), and to time (after /to)
-        String description = parts[0].substring(6).trim();
+        String description = parts[0].substring(6).trim(); // Assuming the description starts after "event"
         String from = parts[1].trim();
         String to = parts[2].trim();
 
+        // Create a new Event task with the extracted details
         Task newTask = new Event(description, from, to);
 
+        // Add the event task to the task list
         tasks.addTask(newTask);
 
         // Display a message confirming the task was added
