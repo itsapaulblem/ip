@@ -71,7 +71,8 @@ public class Deadline extends Task {
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
-        String format = "D | " + (isDone ? "1" : "0") + " | " + description + " | " +
+        String format = "D | " + (isDone ? "1" : "0") + " | " + description + " | "
+                +
                 dateTime.format(formatter);
         assert format.split(" \\| ").length == 4 : "File format must have exactly 4 parts";
         return format;
