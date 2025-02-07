@@ -6,7 +6,7 @@ package alden;
  */
 public abstract class Task {
     protected String description;
-    protected boolean isDone; 
+    protected boolean isDone;
 
     /**
      * Constructs a Task object with the given description.
