@@ -37,6 +37,8 @@ public class Parser {
             return new FindTaskCommand(fullCommand);
         } else if (fullCommand.isEmpty()) {
             throw new AldenException("Keyword cannot be empty for find command.");
+        } else if (fullCommand.startsWith("sort")) {
+            return new SortCommand(fullCommand);
         } else {
             throw new AldenException("Invalid command: " + fullCommand); // Throw exception if the command is invalid
         }
