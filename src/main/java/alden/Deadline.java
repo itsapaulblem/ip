@@ -24,7 +24,8 @@ public class Deadline extends Task {
         assert by != null && !by.trim().isEmpty() : "Deadline time cannot be null or empty";
         this.dateTime = parseDateTime(by);
         assert this.dateTime != null : "Parsed datetime cannot be null";
-        assert !this.dateTime.isBefore(LocalDateTime.now().minusMinutes(1)) :
+        assert !this.dateTime.isBefore(LocalDateTime.now().minusMinutes(1))
+                :
                 "Deadline should not be in the past";
     }
 
@@ -70,7 +71,8 @@ public class Deadline extends Task {
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
-        String format = "D | " + (isDone ? "1" : "0") + " | " + description + " | " +
+        String format = "D | " + (isDone ? "1" : "0") + " | " + description + " | "
+                +
                 dateTime.format(formatter);
         assert format.split(" \\| ").length == 4 : "File format must have exactly 4 parts";
         return format;
@@ -88,5 +90,9 @@ public class Deadline extends Task {
                 + "] " + description + " (by: "
                 +
                 dateTime.format(DateTimeFormatter.ofPattern("MMM dd yyyy h:mm a")) + ")";
+    }
+
+    public LocalDateTime getDateTime() {
+        return this.dateTime;
     }
 }
