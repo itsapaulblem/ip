@@ -15,6 +15,8 @@ public class AddDeadlineCommand extends Command {
      */
     public AddDeadlineCommand(String userInput) {
 
+        assert userInput != null : "User input cannot be null";
+        assert userInput.startsWith("deadline") : "Command must start with 'deadline'";
         this.userInput = userInput;
     }
 
@@ -29,15 +31,26 @@ public class AddDeadlineCommand extends Command {
      * @throws AldenException If the user input is malformed or doesn't contain a valid deadline.
      */
     public void execute(TaskList tasks, Ui ui, Storage storage) throws AldenException {
+        assert tasks != null : "TaskList cannot be null";
+        assert ui != null : "UI cannot be null";
+        assert storage != null : "Storage cannot be null";
+
         String[] parts = this.userInput.split("/by", 2); // Split the input by the "/by" keyword
         if (parts.length < 2) {
             // If there is no "/by" clause, throw an exception
             throw new AldenException("The deadline task must have a description and a /by clause.");
         } else {
             String description = parts[0].substring(9).trim(); // Extract description, starting after "deadline"
-            String by = parts[1].trim(); // Extract the deadline date
+            assert !description.isEmpty() : "Task description cannot be empty";
+
+            String by = parts[1].trim();
+            assert !by.isEmpty() : "Deadline cannot be empty";
+
             Task newTask = new Deadline(description, by);
             tasks.addTask(newTask);
+            assert !tasks.isEmpty() : "Task list should not be empty after adding task";
+            assert tasks.get(tasks.size() - 1) == newTask : "Last task should be the newly added task";
+
             ui.showTaskAdded(newTask, tasks.size());
             storage.save(tasks.getTasks());
         }

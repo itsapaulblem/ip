@@ -21,7 +21,11 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) throws AldenException {
         super(description);
+        assert by != null && !by.trim().isEmpty() : "Deadline time cannot be null or empty";
         this.dateTime = parseDateTime(by);
+        assert this.dateTime != null : "Parsed datetime cannot be null";
+        assert !this.dateTime.isBefore(LocalDateTime.now().minusMinutes(1)) :
+                "Deadline should not be in the past";
     }
 
     /**
@@ -66,7 +70,10 @@ public class Deadline extends Task {
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
-        return "D | " + (isDone ? "1" : "0") + " | " + description + " | " + dateTime.format(formatter);
+        String format = "D | " + (isDone ? "1" : "0") + " | " + description + " | " +
+                dateTime.format(formatter);
+        assert format.split(" \\| ").length == 4 : "File format must have exactly 4 parts";
+        return format;
     }
 
     /**
