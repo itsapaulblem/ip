@@ -24,8 +24,14 @@ public class Event extends Task {
      */
     public Event(String description, String from, String to) throws AldenException {
         super(description);
+        assert from != null && !from.trim().isEmpty() : "Start time cannot be null or empty";
+        assert to != null && !to.trim().isEmpty() : "End time cannot be null or empty";
+
         this.from = parseDateTime(from);
         this.to = parseDateTime(to);
+
+        assert this.from != null && this.to != null : "Parsed date times cannot be null";
+        assert !this.to.isBefore(this.from) : "End time cannot be before start time";
     }
 
     /**
@@ -78,8 +84,9 @@ public class Event extends Task {
     @Override
     public String toFileFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm");
-        return "E | " + (isDone ? "1" : "0") + " | " + description
-                + " | " + from.format(formatter)
-                + " | " + to.format(formatter);
+        String format = "E | " + (isDone ? "1" : "0") + " | " + description + " | " +
+                from.format(formatter) + " | " + to.format(formatter);
+        assert format.split(" \\| ").length == 5 : "File format must have exactly 5 parts";
+        return format;
     }
 }

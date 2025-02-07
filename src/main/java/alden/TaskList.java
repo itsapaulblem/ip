@@ -15,7 +15,11 @@ public class TaskList {
      * @param task The task to be added to the list.
      */
     public void addTask(Task task) {
+        assert task != null : "Cannot add null task";
+        int sizeBefore = tasks.size();
         tasks.add(task);
+        assert tasks.size() == sizeBefore + 1 : "Task list size should increase by 1";
+        assert tasks.get(tasks.size() - 1).equals(task) : "Added task must be in list";
     }
 
     /**
@@ -25,8 +29,16 @@ public class TaskList {
      * @return The task that was removed.
      */
     public Task removeTask(int index) {
-
-        return tasks.remove(index);
+        assert index >= 0 && index < tasks.size() : "Index must be within bounds";
+        Task taskToRemove = tasks.get(index);
+        Task removed = tasks.remove(index);
+        assert removed.equals(taskToRemove) : "Removed task should match requested task";
+        assert tasks.size() >= 0 : "Task list size cannot be negative";
+        // Check that the removed task is no longer in the list
+        for (Task t : tasks) {
+            assert !t.equals(removed) : "Removed task should not be in list";
+        }
+        return removed;
     }
 
     /**
@@ -36,7 +48,7 @@ public class TaskList {
      * @return The task at the specified index.
      */
     public Task get(int index) {
-
+        assert index >= 0 && index < tasks.size() : "Index must be within bounds";
         return tasks.get(index);
     }
 
@@ -46,7 +58,7 @@ public class TaskList {
      * @return The size of the task list.
      */
     public int size() {
-
+        assert tasks.size() >= 0 : "Task list size cannot be negative";
         return tasks.size();
     }
 
@@ -66,7 +78,6 @@ public class TaskList {
      * @return The list of tasks.
      */
     public ArrayList<Task> getTasks() {
-
         return tasks;
     }
 
@@ -78,6 +89,7 @@ public class TaskList {
      * @return An ArrayList of tasks that match the given keyword.
      */
     public ArrayList<Task> findTasks(String keyword) {
+        assert keyword != null && !keyword.trim().isEmpty() : "Search keyword cannot be null or empty";
         ArrayList<Task> matchingTasks = new ArrayList<>();
         String lowerCaseKeyword = keyword.toLowerCase(); // Convert keyword to lowercase for case-insensitive search
 

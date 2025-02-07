@@ -6,7 +6,7 @@ package alden;
  * creates a new Event task, and adds it to the task list.
  */
 public class AddEventCommand extends Command {
-    private String userInput; // The user input containing the description, start time, and end time
+    private final String userInput; // The user input containing the description, start time, and end time
 
     /**
      * Constructs an AddEventCommand with the user input.
@@ -14,6 +14,8 @@ public class AddEventCommand extends Command {
      * @param userInput The input from the user that contains the task description, start time, and end time.
      */
     public AddEventCommand(String userInput) {
+        assert userInput != null : "User input cannot be null";
+        assert userInput.startsWith("event") : "Command must start with event";
         this.userInput = userInput;
     }
 
@@ -32,19 +34,12 @@ public class AddEventCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws AldenException {
+        assert tasks != null : "TaskList cannot be null";
+        assert ui != null : "UI cannot be null";
+        assert storage != null : "Storage cannot be null";
+        
         String[] parts = userInput.split("/from|/to", 3);
-
-        if (parts.length < 3) {
-            throw new AldenException(
-                    "The event task must have a description, /from clause, and /to clause.");
-        }
-
-        // Extract description (everything before /from), from time (between /from and /to), and to time (after /to)
-        String description = parts[0].substring(6).trim();
-        String from = parts[1].trim();
-        String to = parts[2].trim();
-
-        Task newTask = new Event(description, from, to);
+        Task newTask = getTask(parts);
 
         tasks.addTask(newTask);
 
@@ -53,5 +48,24 @@ public class AddEventCommand extends Command {
 
         // Save the updated task list to storage
         storage.save(tasks.getTasks());
+    }
+
+    private static Task getTask(String[] parts) throws AldenException {
+        if (parts.length < 3) {
+            throw new AldenException(
+                    "The event task must have a description, /from clause, and /to clause.");
+        }
+
+        // Extract description (everything before /from), from time (between /from and /to), and to time (after /to)
+        String description = parts[0].substring(6).trim();
+        assert !description.isEmpty() : "Event description cannot be empty";
+
+        String from = parts[1].trim();
+        String to = parts[2].trim();
+        assert !from.isEmpty() && !to.isEmpty() : "Event times cannot be empty";
+
+        Task newTask = new Event(description, from, to);
+        assert newTask instanceof Event : "Created task must be an Event";
+        return newTask;
     }
 }
