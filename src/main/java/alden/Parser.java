@@ -25,7 +25,7 @@ public class Parser {
             return new AddEventCommand(fullCommand); // Create a new AddEventCommand
         } else if (fullCommand.startsWith("mark")) {
             return new MarkTaskCommand(fullCommand, true); // Create a new MarkTaskCommand to mark as done
-        } else if (fullCommand.startsWith("unmarked")) {
+        } else if (fullCommand.startsWith("unmark")) {
             return new MarkTaskCommand(fullCommand, false); // Create a new MarkTaskCommand to unmark as done
         } else if (fullCommand.startsWith("delete")) {
             return new DeleteTaskCommand(fullCommand); // Create a new DeleteTaskCommand
