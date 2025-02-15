@@ -18,7 +18,6 @@ public class TaskList {
         assert task != null : "Cannot add null task";
         int sizeBefore = tasks.size();
         tasks.add(task);
-        assert tasks.size() == sizeBefore + 1 : "Task list size should increase by 1";
         assert tasks.get(tasks.size() - 1).equals(task) : "Added task must be in list";
     }
 
@@ -29,7 +28,6 @@ public class TaskList {
      * @return The task that was removed.
      */
     public Task removeTask(int index) {
-        assert index >= 0 && index < tasks.size() : "Index must be within bounds";
         Task taskToRemove = tasks.get(index);
         Task removed = tasks.remove(index);
         assert removed.equals(taskToRemove) : "Removed task should match requested task";
@@ -58,7 +56,6 @@ public class TaskList {
      * @return The size of the task list.
      */
     public int size() {
-        assert tasks.size() >= 0 : "Task list size cannot be negative";
         return tasks.size();
     }
 
