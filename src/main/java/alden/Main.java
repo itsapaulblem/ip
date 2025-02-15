@@ -1,5 +1,8 @@
 package alden;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -11,8 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Main GUI application class for the Alden task management system.

@@ -3,11 +3,9 @@ package alden;
 import java.util.Scanner;
 
 /**
- * Starts the Alden program.
- * Initializes the program, loads tasks from storage, and enters the user input loop.
- * The program continues running until the user types "bye".
+ *  Represents the core task manager application that handles task storage and user commands.
+ *  Provides functionality for adding, listing, marking and managing various types of tasks.
  *
- * @param args Command-line arguments (not used).
  */
 public class Alden {
     private static final String FILE_PATH = "./data/Alden.txt";
