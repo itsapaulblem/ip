@@ -3,9 +3,11 @@ package alden;
 import java.util.Scanner;
 
 /**
- * The main entry point of the Alden task management program.
- * This class is responsible for initializing the task list, loading data from storage,
- * and managing the user interaction loop.
+ * Starts the Alden program.
+ * Initializes the program, loads tasks from storage, and enters the user input loop.
+ * The program continues running until the user types "bye".
+ *
+ * @param args Command-line arguments (not used).
  */
 public class Alden {
     private static final String FILE_PATH = "./data/Alden.txt";

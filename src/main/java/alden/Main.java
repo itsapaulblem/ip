@@ -127,7 +127,7 @@ public class Main extends Application {
     }
 
     /**
-     * Main method to launch the Alden application.
+     * Launches the Alden application.
      *
      * @param args Command line arguments (not used).
      */

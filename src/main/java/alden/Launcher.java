@@ -8,11 +8,10 @@ package alden;
 public class Launcher {
 
     /**
-     * The main method of the `Launcher` class.  It simply calls the `main` method
-     * of the `Main` class to start the Alden application.
+     * Entry point for launching the Alden application.
+     * Calls the `main` method of the `Main` class to start the program.
      *
-     * @param args Command line arguments passed to the application.
-     *             These arguments are forwarded to the `Main.main` method.
+     * @param args Command line arguments forwarded to the `Main.main`.
      */
     public static void main(String[] args) {
         Main.main(args);
