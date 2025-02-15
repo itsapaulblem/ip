@@ -134,3 +134,6 @@ To stop the application, use the `bye` command.
 Example: `bye`
 
 Expected outcome: Stops the application.
+
+## Additional Notes
+*GitHub Copilot was used throughout the development as an auto-complete tool
