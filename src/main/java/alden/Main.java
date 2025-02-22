@@ -281,6 +281,13 @@ public class Main extends Application {
      * @param args Command line arguments (not used)
      */
     public static void main(String[] args) {
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("linux")) {
+            System.setProperty("javafx.platform", "gtk");
+            System.setProperty("glass.platform", "gtk");
+            System.setProperty("prism.order", "sw");
+        }
+
         launch(args);
     }
 }
