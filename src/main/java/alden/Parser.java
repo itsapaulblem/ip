@@ -25,7 +25,7 @@ public class Parser {
             return new AddEventCommand(fullCommand); // Create a new AddEventCommand
         } else if (fullCommand.startsWith("mark")) {
             return new MarkTaskCommand(fullCommand, true); // Create a new MarkTaskCommand to mark as done
-        } else if (fullCommand.startsWith("unmarked")) {
+        } else if (fullCommand.startsWith("unmark")) {
             return new MarkTaskCommand(fullCommand, false); // Create a new MarkTaskCommand to unmark as done
         } else if (fullCommand.startsWith("delete")) {
             return new DeleteTaskCommand(fullCommand); // Create a new DeleteTaskCommand
@@ -37,6 +37,8 @@ public class Parser {
             return new FindTaskCommand(fullCommand);
         } else if (fullCommand.isEmpty()) {
             throw new AldenException("Keyword cannot be empty for find command.");
+        } else if (fullCommand.startsWith("sort")) {
+            return new SortCommand(fullCommand);
         } else {
             throw new AldenException("Invalid command: " + fullCommand); // Throw exception if the command is invalid
         }
